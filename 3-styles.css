@@ -1,3 +1,6 @@
+:root {
+  --distance: 80px;
+}
 * {
   box-sizing: border-box;
 }
@@ -16,7 +19,8 @@ input {
   visibility: hidden;
 }
 
-label {
+.menu-open-button {
+  position: absolute;
   background-color: #cc1c3c;
   border: #9a2544 solid 2px;
   border-radius: 50px;
@@ -52,7 +56,7 @@ label:hover {
 }
 
 .menu-item {
-  position: absolute;
+  /*position: absolute;*/
   left: 50px;
   top: 50px;
   z-index: -1;
@@ -62,11 +66,12 @@ label:hover {
   width: 60px;
   height: 60px;
   margin: 10px;
-  /*margin-left: 55px;*/
+  margin-left: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  transition: transform 0.2s ease-in-out;
 }
 
 .menu-item i {
@@ -106,13 +111,28 @@ input:checked + label .menu-line-3 {
   transition: transform 0.3s ease-in-out;
 }
 
-input:not(:checked) ~ .menu-item {
-  visibility: hidden;
+
+.menu-item {
+  position: absolute;
 }
-input:checked ~ .menu-item {
-  position: relative;
-  margin-left: 55px;
-  left: 0;
-  top: 0;
+
+.menu .menu-open:checked ~ .menu-item {
   z-index: 1;
+}
+.menu .menu-open:checked ~ .menu-item:nth-of-type(1) {
+transform: translateY(calc(var(--distance)));
+}
+
+.menu .menu-open:checked ~ .menu-item:nth-of-type(2) {
+  transform: translateY(calc(var(--distance) * 2));
+}
+
+.menu .menu-open:checked ~ .menu-item:nth-of-type(3) {
+  transform: translateY(calc(var(--distance) * 3));
+}
+.menu .menu-open:checked ~ .menu-item:nth-of-type(4) {
+  transform: translateY(calc(var(--distance) * 4));
+}
+.menu .menu-open:checked ~ .menu-item:nth-of-type(5) {
+  transform: translateY(calc(var(--distance) * 5));
 }
