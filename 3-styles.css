@@ -78,11 +78,11 @@ label:hover {
   color: white;
 }
 
-.menu-item:hover {
+.menu .menu-open:checked ~ .menu-item:hover {
   background-color: white;
 }
 
-.menu-item:hover i {
+.menu .menu-open:checked ~ .menu-item:hover i {
   color: #cc1c3c;
 }
 
@@ -135,4 +135,15 @@ transform: translateY(calc(var(--distance)));
 }
 .menu .menu-open:checked ~ .menu-item:nth-of-type(5) {
   transform: translateY(calc(var(--distance) * 5));
+}
+.menu .menu-open:not(:checked) ~ label {
+  animation-name: heartbeat;
+  animation-duration: 2s;
+}
+@keyframes heartbeat {
+  0%   {transform: scale(1, 1);}
+  25%  {transform: scale(1.2, 1.2);}
+  50%  {transform: scale(1, 1);}
+  75% {transform: scale(1.2, 1.2);}
+  100% {transform: scale(1, 1);}
 }
